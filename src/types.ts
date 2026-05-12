@@ -35,7 +35,25 @@ export interface TextNormalizationOptions {
   locale?: string;
 }
 
-export interface CompareOptions extends TextNormalizationOptions {
+export interface JaroWinklerOptions extends TextNormalizationOptions {
+  /**
+   * Prefix boost applied by Jaro-Winkler.
+   *
+   * Values are clamped between 0 and 0.25.
+   *
+   * @default 0.1
+   */
+  prefixScale?: number;
+
+  /**
+   * Maximum common prefix length used by Jaro-Winkler.
+   *
+   * @default 4
+   */
+  maxPrefixLength?: number;
+}
+
+export interface CompareOptions extends JaroWinklerOptions {
   /**
    * Similarity algorithm to use.
    *

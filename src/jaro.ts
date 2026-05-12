@@ -1,5 +1,5 @@
 import { normalizeText } from "./normalize.js";
-import type { TextNormalizationOptions } from "./types.js";
+import type { JaroWinklerOptions, TextNormalizationOptions } from "./types.js";
 
 export function jaroSimilarity(left: string, right: string, options: TextNormalizationOptions = {}): number {
   const leftChars = Array.from(normalizeText(left, options));
@@ -53,11 +53,6 @@ export function jaroSimilarity(left: string, right: string, options: TextNormali
     matches / rightChars.length +
     (matches - transpositions / 2) / matches
   ) / 3;
-}
-
-export interface JaroWinklerOptions extends TextNormalizationOptions {
-  prefixScale?: number;
-  maxPrefixLength?: number;
 }
 
 export function jaroWinklerSimilarity(left: string, right: string, options: JaroWinklerOptions = {}): number {

@@ -72,6 +72,20 @@ describe("compareStrings", () => {
   it("supports algorithm selection", () => {
     expect(compareStrings("kitten", "sitting", { algorithm: "levenshtein" })).toBeCloseTo(4 / 7);
   });
+
+  it("passes jaro-winkler options through the high-level API", () => {
+    const withoutBoost = compareStrings("martha", "marhta", {
+      algorithm: "jaro-winkler",
+      prefixScale: 0
+    });
+    const withBoost = compareStrings("martha", "marhta", {
+      algorithm: "jaro-winkler",
+      prefixScale: 0.2,
+      maxPrefixLength: 3
+    });
+
+    expect(withBoost).toBeGreaterThan(withoutBoost);
+  });
 });
 
 describe("rankMatches and findBestMatch", () => {

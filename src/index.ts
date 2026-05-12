@@ -5,11 +5,12 @@ export type {
   MatchResult,
   RankOptions,
   SimilarityAlgorithm,
-  TextNormalizationOptions
+  TextNormalizationOptions,
+  JaroWinklerOptions
 } from "./types.js";
 
 export { getBigrams, diceCoefficient } from "./bigrams.js";
-export { jaroSimilarity, jaroWinklerSimilarity, type JaroWinklerOptions } from "./jaro.js";
+export { jaroSimilarity, jaroWinklerSimilarity } from "./jaro.js";
 export { levenshteinDistance, levenshteinSimilarity } from "./levenshtein.js";
 export { normalizeText } from "./normalize.js";
 

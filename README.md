@@ -51,6 +51,16 @@ Available algorithms:
 | `jaro` | Short names or identifiers with transposed characters. |
 | `jaro-winkler` | Name-like strings where common prefixes matter. |
 
+`jaro-winkler` also accepts `prefixScale` and `maxPrefixLength`:
+
+```ts
+compareStrings("martha", "marhta", {
+  algorithm: "jaro-winkler",
+  prefixScale: 0.12,
+  maxPrefixLength: 4
+});
+```
+
 ### `rankMatches(query, candidates, options?)`
 
 Ranks candidates from best to worst. Ties keep the original candidate order.
@@ -63,6 +73,8 @@ const matches = rankMatches("pay export", ["payment export", "search endpoint"],
   limit: 5
 });
 ```
+
+`threshold` keeps only matches with a rating at or above that score. `limit` caps the number of returned matches after sorting.
 
 Each match has:
 
@@ -143,6 +155,20 @@ Defaults:
 | `trim` | `true` |
 | `normalizeWhitespace` | `true` |
 | `stripDiacritics` | `false` |
+
+Ranking options:
+
+| Option | Default |
+| --- | --- |
+| `threshold` | `0` |
+| `limit` | no limit |
+
+Jaro-Winkler options:
+
+| Option | Default |
+| --- | --- |
+| `prefixScale` | `0.1` |
+| `maxPrefixLength` | `4` |
 
 ## Choosing an algorithm
 
