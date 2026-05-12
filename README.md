@@ -4,6 +4,10 @@ Compare and rank short strings with a small TypeScript-first toolkit.
 
 `text-similarity-kit` is a clean-room alternative for everyday fuzzy matching tasks: search suggestions, typo-tolerant labels, command palettes, duplicate detection and lightweight record matching. It ships as ESM, has no runtime dependencies and works in Node.js or modern browsers.
 
+## Demo
+
+Try the browser demo: https://packages.wasta-wocket.fr/text-similarity-kit/
+
 ## Install
 
 ```bash
