@@ -1,12 +1,22 @@
 # text-similarity-kit
 
+[![npm version](https://img.shields.io/npm/v/text-similarity-kit.svg)](https://www.npmjs.com/package/text-similarity-kit)
+[![License: MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](LICENSE)
+[![CI](https://github.com/Recoveredd/text-similarity-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/Recoveredd/text-similarity-kit/actions/workflows/ci.yml)
+
 Compare and rank short strings with a small TypeScript-first toolkit.
 
 `text-similarity-kit` is a clean-room alternative for everyday fuzzy matching tasks: search suggestions, typo-tolerant labels, command palettes, duplicate detection and lightweight record matching. It ships as ESM, has no runtime dependencies and works in Node.js or modern browsers.
 
-## Demo
+Links: [Demo](https://packages.wasta-wocket.fr/text-similarity-kit/) · [npm](https://www.npmjs.com/package/text-similarity-kit) · [GitHub](https://github.com/Recoveredd/text-similarity-kit)
 
-Try the browser demo: https://packages.wasta-wocket.fr/text-similarity-kit/
+## Package quality
+
+- TypeScript types are generated from the source.
+- ESM-only package with no runtime dependencies.
+- Marked as side-effect free for bundlers.
+- Tested on Node.js 20 and 22 with GitHub Actions.
+- Works in Node.js, browsers, Vite apps and static docs tooling.
 
 ## Install
 
