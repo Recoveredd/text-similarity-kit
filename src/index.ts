@@ -4,6 +4,7 @@ export type {
   Matcher,
   MatchResult,
   RankOptions,
+  SimilarityCheckOptions,
   SimilarityAlgorithm,
   TextNormalizationOptions,
   JaroWinklerOptions
@@ -18,7 +19,7 @@ import { diceCoefficient } from "./bigrams.js";
 import { jaroSimilarity, jaroWinklerSimilarity } from "./jaro.js";
 import { levenshteinSimilarity } from "./levenshtein.js";
 import { normalizeText } from "./normalize.js";
-import type { BestMatchResult, CompareOptions, Matcher, MatchResult, RankOptions } from "./types.js";
+import type { BestMatchResult, CompareOptions, Matcher, MatchResult, RankOptions, SimilarityCheckOptions } from "./types.js";
 
 export function compareStrings(left: string, right: string, options: CompareOptions = {}): number {
   const { algorithm = "dice", ...normalizationOptions } = options;
@@ -35,6 +36,12 @@ export function compareStrings(left: string, right: string, options: CompareOpti
     default:
       return exhaustiveAlgorithmCheck(algorithm);
   }
+}
+
+export function isSimilar(left: string, right: string, options: SimilarityCheckOptions = {}): boolean {
+  const { threshold = 0.8, ...compareOptions } = options;
+
+  return compareStrings(left, right, compareOptions) >= clamp(threshold, 0, 1);
 }
 
 export function rankMatches<TCandidate extends string>(

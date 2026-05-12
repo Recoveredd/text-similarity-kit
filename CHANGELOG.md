@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Added `isSimilar` for direct boolean threshold checks.
+- Republished package metadata so npm displays the live demo link.
+
 ## 0.1.0
 
 - Initial release with Dice, Levenshtein, Jaro and Jaro-Winkler similarity helpers.

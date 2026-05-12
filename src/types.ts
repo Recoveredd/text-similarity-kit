@@ -62,6 +62,15 @@ export interface CompareOptions extends JaroWinklerOptions {
   algorithm?: SimilarityAlgorithm;
 }
 
+export interface SimilarityCheckOptions extends CompareOptions {
+  /**
+   * Minimum score required to consider two strings similar.
+   *
+   * @default 0.8
+   */
+  threshold?: number;
+}
+
 export interface RankOptions extends CompareOptions {
   /**
    * Hide matches below this score.

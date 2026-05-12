@@ -27,10 +27,13 @@ npm install text-similarity-kit
 ## Quick start
 
 ```ts
-import { compareStrings, findBestMatch, rankMatches } from "text-similarity-kit";
+import { compareStrings, findBestMatch, isSimilar, rankMatches } from "text-similarity-kit";
 
 compareStrings("invoice export", "invoices exports");
 // 0.896...
+
+isSimilar("invoice export", "export invoices", { threshold: 0.7 });
+// true
 
 const commands = ["Create invoice", "Export invoices", "Import contacts"];
 
@@ -74,6 +77,22 @@ compareStrings("martha", "marhta", {
   maxPrefixLength: 4
 });
 ```
+
+### `isSimilar(left, right, options?)`
+
+Returns a boolean by comparing two strings against a threshold.
+
+```ts
+import { isSimilar } from "text-similarity-kit";
+
+isSimilar("invoice export", "export invoices", {
+  algorithm: "jaro-winkler",
+  threshold: 0.7
+});
+// true
+```
+
+`threshold` defaults to `0.8` and is clamped between `0` and `1`.
 
 ### `rankMatches(query, candidates, options?)`
 

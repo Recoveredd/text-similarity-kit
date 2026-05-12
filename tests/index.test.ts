@@ -5,6 +5,7 @@ import {
   diceCoefficient,
   findBestMatch,
   getBigrams,
+  isSimilar,
   jaroSimilarity,
   jaroWinklerSimilarity,
   levenshteinDistance,
@@ -85,6 +86,18 @@ describe("compareStrings", () => {
     });
 
     expect(withBoost).toBeGreaterThan(withoutBoost);
+  });
+});
+
+describe("isSimilar", () => {
+  it("checks strings against a threshold", () => {
+    expect(isSimilar("invoice export", "invoice exports", { algorithm: "jaro-winkler", threshold: 0.8 })).toBe(true);
+    expect(isSimilar("invoice export", "support notes", { threshold: 0.9 })).toBe(false);
+  });
+
+  it("clamps unsafe thresholds", () => {
+    expect(isSimilar("same", "same", { threshold: Number.POSITIVE_INFINITY })).toBe(true);
+    expect(isSimilar("different", "other", { threshold: Number.NaN })).toBe(true);
   });
 });
 
